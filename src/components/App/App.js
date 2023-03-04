@@ -5,6 +5,7 @@ import HomePage from 'pages/Home';
 import RegisterPage from 'pages/Register';
 import LoginPage from 'pages/Login';
 import ContactsPage from 'pages/Contacts';
+import NotFound from 'pages/NotFound ';
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

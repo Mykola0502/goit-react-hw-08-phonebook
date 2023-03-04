@@ -1,3 +1,19 @@
+import { Navigation } from 'components/Navigation';
+import { UserMenu } from 'components/UserMenu';
+import { AuthNav } from 'components/AuthNav';
+
+import { Header } from './AppBar.styled';
+
+export const AppBar = () => {
+  return (
+    <Header>
+      <Navigation />
+      <UserMenu />
+      <AuthNav />
+    </Header>
+  );
+};
+
 /**
  *
  */
