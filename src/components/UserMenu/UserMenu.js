@@ -1,8 +1,14 @@
+import { useAuth } from 'hooks';
+
+import { Wrapper, UserName } from './UserMenu.styled';
+
 export const UserMenu = () => {
+  const { user } = useAuth;
+
   return (
-    <>
-      <p>Welcome, </p>
+    <Wrapper>
+      <UserName>Welcome, {user.name}</UserName>
       <button type="button">Logout</button>
-    </>
+    </Wrapper>
   );
 };
