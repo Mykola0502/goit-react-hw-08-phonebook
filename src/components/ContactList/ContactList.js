@@ -13,35 +13,28 @@ const getVisibleContacts = (contacts, filter) => {
 };
 
 export const ContactList = () => {
-  //   const contacts = useSelector(selectContacts);
-  //   const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
-  //   const visibleContacts = getVisibleContacts(contacts, filter);
+  const visibleContacts = getVisibleContacts(contacts, filter);
 
-  return (
-    <ul>
-      <li>
-        <ContactItem />
-      </li>
-    </ul>
+  return visibleContacts.length ? (
+    <>
+      <ul>
+        {visibleContacts
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(contact => (
+            <li key={contact.id}>
+              <ContactItem contact={contact} />
+            </li>
+          ))}
+      </ul>
+    </>
+  ) : (
+    <>
+      <FilterText>No matches found for "{filter}"!</FilterText>
+    </>
   );
-  //     (visibleContacts.length ? (
-  //     <>
-  //       <ul>
-  //         {visibleContacts
-  //           .sort((a, b) => a.name.localeCompare(b.name))
-  //           .map(contact => (
-  //             <li key={contact.id}>
-  //               <ContactItem contact={contact} />
-  //             </li>
-  //           ))}
-  //       </ul>
-  //     </>
-  //   ) : (
-  //     <>
-  //       <FilterText>No matches found for "{filter}"!</FilterText>
-  //     </>
-  //   );)
 };
 
 /**

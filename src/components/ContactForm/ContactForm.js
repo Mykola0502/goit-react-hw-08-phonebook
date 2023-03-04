@@ -35,53 +35,53 @@ const initialValues = {
 };
 
 export const ContactForm = () => {
-  //   const dispatch = useDispatch();
-  //   const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
-  //   const onAddContact = data => {
-  //     const newContact = {
-  //       id: nanoid(3),
-  //       name: data.name,
-  //       phone: data.number,
-  //     };
+  const onAddContact = data => {
+    const newContact = {
+      id: nanoid(3),
+      name: data.name,
+      phone: data.number,
+    };
 
-  //     const dataNameNormalized = newContact.name.toLowerCase();
-  //     const anyName = contacts.some(
-  //       ({ name }) => dataNameNormalized === name.toLowerCase()
-  //     );
-  //     const anyNumber = contacts.some(({ phone }) => newContact.phone === phone);
-  //     const findNumber = contacts.find(({ phone }) => newContact.phone === phone);
-  //     const notifyErrorName = () =>
-  //       toast.error(`"${newContact.name}" is already in contacts`);
-  //     const notifyErrorNumber = () =>
-  //       toast.error(
-  //         `Number "${newContact.phone}" is already saved as "${findNumber.name}"`
-  //       );
-  //     const notifySucces = () =>
-  //       toast.success(`"${newContact.name}" successfully added!`);
+    const dataNameNormalized = newContact.name.toLowerCase();
+    const anyName = contacts.some(
+      ({ name }) => dataNameNormalized === name.toLowerCase()
+    );
+    const anyNumber = contacts.some(({ phone }) => newContact.phone === phone);
+    const findNumber = contacts.find(({ phone }) => newContact.phone === phone);
+    const notifyErrorName = () =>
+      toast.error(`"${newContact.name}" is already in contacts`);
+    const notifyErrorNumber = () =>
+      toast.error(
+        `Number "${newContact.phone}" is already saved as "${findNumber.name}"`
+      );
+    const notifySucces = () =>
+      toast.success(`"${newContact.name}" successfully added!`);
 
-  //     if (anyName) {
-  //       notifyErrorName();
-  //       return;
-  //     }
-  //     if (anyNumber) {
-  //       notifyErrorNumber();
-  //       return;
-  //     }
-  //     notifySucces();
-  //     dispatch(addContact(newContact));
-  //   };
+    if (anyName) {
+      notifyErrorName();
+      return;
+    }
+    if (anyNumber) {
+      notifyErrorNumber();
+      return;
+    }
+    notifySucces();
+    dispatch(addContact(newContact));
+  };
 
-  //   const handleSubmit = (values, { resetForm }) => {
-  //     onAddContact(values);
-  //     resetForm();
-  //   };
+  const handleSubmit = (values, { resetForm }) => {
+    onAddContact(values);
+    resetForm();
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={schema}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <FormContact>
         <FormLabel htmlFor="name">
@@ -114,6 +114,10 @@ export const ContactForm = () => {
   );
 };
 
+/**
+ *
+ *
+ */
 // import { useSelector, useDispatch } from 'react-redux';
 // import { nanoid } from 'nanoid';
 // import toast from 'react-hot-toast';

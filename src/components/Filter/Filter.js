@@ -6,11 +6,11 @@ import { selectFilter } from 'redux/contacts/selectors';
 import { FilterLabel, FilterInput } from './Filter.styled';
 
 export const Filter = () => {
-  // const filter = useSelector(selectFilter);
-  // const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+  const dispatch = useDispatch();
 
   const changeFilter = evt => {
-    // dispatch(setFilter(evt.currentTarget.value));
+    dispatch(setFilter(evt.currentTarget.value));
   };
 
   return (
@@ -19,7 +19,7 @@ export const Filter = () => {
       <FilterInput
         type="text"
         name="filter"
-        // value={filter}
+        value={filter}
         onChange={changeFilter}
         placeholder="Put the name for search"
       />

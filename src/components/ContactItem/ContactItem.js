@@ -5,20 +5,17 @@ import { deleteContact } from 'redux/contacts/operations';
 
 import { Item, Number, DeleteBtn } from './ContactItem.styled';
 
-export const ContactItem = () => {
-  //   const { id, name, phone } = contact;
-  //   const dispatch = useDispatch();
-  //   const handleDelete = () => dispatch(deleteContact(id));
+export const ContactItem = ({ contact }) => {
+  const { id, name, phone } = contact;
+  const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <Item>
-      <p>ContactItem</p>
-      {/* <span>{name}: </span>
-      <Number>{phone}</Number> */}
-      <DeleteBtn
-        type="button"
-        //   onClick={handleDelete}
-      >
+      <span>{name}: </span>
+      <Number>{phone}</Number>
+      <DeleteBtn type="button" onClick={handleDelete}>
         Delete
       </DeleteBtn>
     </Item>
