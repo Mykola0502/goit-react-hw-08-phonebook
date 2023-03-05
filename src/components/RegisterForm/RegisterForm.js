@@ -5,6 +5,7 @@ import { FormRegister, FormRegisterLabel } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
