@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -40,22 +40,26 @@ export const ContactForm = () => {
 
   const onAddContact = data => {
     const newContact = {
-      id: nanoid(3),
+      // id: nanoid(3),
       name: data.name,
-      phone: data.number,
+      number: data.number,
     };
 
     const dataNameNormalized = newContact.name.toLowerCase();
     const anyName = contacts.some(
       ({ name }) => dataNameNormalized === name.toLowerCase()
     );
-    const anyNumber = contacts.some(({ phone }) => newContact.phone === phone);
-    const findNumber = contacts.find(({ phone }) => newContact.phone === phone);
+    const anyNumber = contacts.some(
+      ({ number }) => newContact.number === number
+    );
+    const findNumber = contacts.find(
+      ({ number }) => newContact.number === number
+    );
     const notifyErrorName = () =>
       toast.error(`"${newContact.name}" is already in contacts`);
     const notifyErrorNumber = () =>
       toast.error(
-        `Number "${newContact.phone}" is already saved as "${findNumber.name}"`
+        `Number "${newContact.number}" is already saved as "${findNumber.name}"`
       );
     const notifySucces = () =>
       toast.success(`"${newContact.name}" successfully added!`);
