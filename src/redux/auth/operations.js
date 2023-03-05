@@ -65,6 +65,37 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
  * headers: Authorization: Bearer token
  */
 export const refreshUser = createAsyncThunk(
+  //   'auth/refresh',
+  //   async (_, thunkAPI) => {
+  //     const persistedToken = thunkAPI.getState().auth.token;
+
+  //     if (!persistedToken) return thunkAPI.rejectWithValue('no valid token');
+
+  //     try {
+  //       setAuthHeader(persistedToken);
+  //       const response = await axios.get('/users/current');
+
+  //       return response.data;
+  //     } catch (error) {
+  //       return thunkAPI.rejectWithValue(error.message);
+  //     }
+  //   }
   'auth/refresh',
-  async (_, thunkAPI) => {}
+  async (_, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    if (!token) {
+      //   return;
+      return thunkAPI.rejectWithValue('No valid token');
+    }
+
+    // console.log('Refreshing...');
+
+    setAuthHeader(token);
+    try {
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
 );
