@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import phonebook from 'images/phonebook.png';
 
 const styles = {
@@ -20,7 +21,9 @@ const Home = () => {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Welcome to your phone book!</h1>
-      <img src={phonebook} alt="Phonebook" width="128" />
+      <Link to="/contacts">
+        <img src={phonebook} alt="Phonebook" width="128" />
+      </Link>
     </div>
   );
 };
