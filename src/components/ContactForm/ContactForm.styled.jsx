@@ -4,6 +4,7 @@ import { Form, Field } from 'formik';
 export const FormContact = styled(Form)`
   margin-bottom: 30px;
   padding: 10px;
+  border-radius: 5px;
   border: 2px solid #000000;
   display: flex;
   flex-direction: column;

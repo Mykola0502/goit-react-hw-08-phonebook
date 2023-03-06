@@ -4,13 +4,6 @@ import { logIn, logOut, refreshUser, register } from './operations';
 const extraActions = [register, logIn];
 const getActions = type => extraActions.map(action => action[type]);
 
-// const initialState = {
-//   user: { name: null, email: null },
-//   token: null,
-//   isLoggedIn: false,
-//   isRefreshing: false,
-// };
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -22,17 +15,7 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(register.pending, (state, action) => state)
-      //   .addCase(register.fulfilled, (state, action) => {
-      //     state.user = action.payload.user;
-      //     state.token = action.payload.token;
-      //     state.isLoggedIn = true;
-      //   })
       .addCase(register.rejected, (state, action) => state)
-      //   .addCase(logIn.fulfilled, (state, action) => {
-      //     state.user = action.payload.user;
-      //     state.token = action.payload.token;
-      //     state.isLoggedIn = true;
-      //   })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
